@@ -16,17 +16,24 @@
 <body>
     <h1>COTS UE for AERPAW (exploring alternatives)</h1>
 
-    <div class="warning">
-        <p>❗ We have to run the following two programming commands before we run the Open5GS container</p>
+    <div class="info">
+        <p>❗ We have to run the following two programming commands before we run the Open5GS container.</p>
     </div>
 
     <h2>Opencells SIM programming</h2>
 
     <pre><code>sudo ./program_uicc --adm 11405625 --imsi 001010000088516  --isdn 00000001 --acc 0040 --key 8EAE4E0E5BFAC60B65E192581234D02A --opc 9CA4C48F83E123270B66E31FF68FB289 -spn "OpenAirInterface" --authenticate</code></pre>
 
+    More info in: <a href="https://github.com/lfarizav/program_uicc" target="_blank"
+        style="text-decoration: none;">program_uicc</a>
+
+
     <h2>Pysim SIM programming</h2>
 
     <pre><code>./pySim-prog.py -p0 -s 8988211000000885163 -x 001 -y 01 -a 11405625 --imsi=001010000088516 --opc=9CA4C48F83E123270B66E31FF68FB289 --msisdn=00000001 --acc 0040 -k 8EAE4E0E5BFAC60B65E192581234D02A -n "OpenAirInterface"</code></pre>
+
+    More info in: <a href="https://osmocom.org/projects/pysim/wiki/PySim-prog" target="_blank"
+        style="text-decoration: none;">pySim</a>
 
     <h2>Check for the <code>dnn</code> parameter in Open5GS config file:</h2>
 
@@ -38,8 +45,8 @@
     <img src="images/general/apn.png" alt="APN configuration" style="width: 271px; display: block; margin: auto;">
     <br>
 
-    <div class="warning">
-        <p>⚠️ Make sure both the name and APN are exactly the same</p>
+    <div class="info">
+        <p>⚠️ Make sure both the name and APN are exactly the same.</p>
     </div>
 
     <h1>How to run</h1>
@@ -106,6 +113,13 @@ export LAUNCH_MODE=TESTBED
     </div>
 
     <h2>Possible issues</h2>
+    <div class="warning">
+        ℹ️ Samsung Galaxy S series phones do not support Band 78. We tested the S21 Ultra 5G on Band 41, and it worked.
+        Band 78 could possibly be enabled by rooting, but this is restricted on US-version phones. Check the srsRAN
+        documentation for a list of working COTS UEs and their supported bands:
+        <a href="https://docs.srsran.com/projects/project/en/latest/knowledge_base/source/cots_ues/source/index.html"
+            target="_blank">working UEs</a>
+    </div>
 
     <p>We previously faced an issue where the connection would disconnect within 60 seconds, even though the COTS UE was
         right in front of the USRP. The specific error we encountered was
@@ -114,7 +128,8 @@ export LAUNCH_MODE=TESTBED
 
     <img src="images/general/error.png" alt="Error message" style="width: 79%;">
 
-    <p>We did the following to solve the disconnection issues:</p>
+    <p>We did the following to resolve the disconnection issues (<b>Pixel 7 Pro</b>; steps may differ for other phones):
+    </p>
 
     <ol>
         <li>Dial <code>*#*#0702#*#*</code>.</li>
@@ -133,6 +148,9 @@ export LAUNCH_MODE=TESTBED
 
     <p>We also recommend that users disable SpeedStep from the BIOS menu.</p>
 
+
+
+
     <script>
         let currentSlide = 0;
 
@@ -144,9 +162,7 @@ export LAUNCH_MODE=TESTBED
             slides.style.transform = `translateX(-${currentSlide * 100}%)`;
         }
     </script>
-    <script>
-        document.addEventListener('contextmenu', event => event.preventDefault());
-    </script>
+
     <footer>
         <p>&copy; <span id="year"></span> Aayam Raj Shakya.</p>
     </footer>

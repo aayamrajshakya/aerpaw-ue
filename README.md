@@ -2,8 +2,6 @@
 
 This README provides an overview of setting up and running a COTS UE (Commercial Off-The-Shelf User Equipment) for AERPAW (Aerial Experimentation and Research Platform for Advanced Wireless).
 
-[Full documentation](https://aayamrajshakya.github.io/OAIxCOTS/) 
-
 ## Prerequisites
 
 Before running the Open5GS container, two SIM programming commands need to be executed:
@@ -29,16 +27,3 @@ The process involves several steps:
 ## Performance Testing
 
 The setup includes running network performance tests. The results are visualized through traffic graphs and charts, showing different bandwidth scenarios (20M, 50M, 100M).
-
-## Troubleshooting
-
-A common issue encountered is the connection disconnecting within 60 seconds. The error message observed is "Request release after UL failure timer expiry". To resolve this:
-
-1. Access a specific dial code on the UE.
-2. Adjust two timer settings related to IMS registration.
-
-For more details, refer to the [official guide](https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-fed/-/blob/master/docs/LIST_OF_TESTED_COTSUE.md).
-
-## Performance Tuning
-
-For optimal performance, it's recommended to disable SpeedStep in the BIOS settings of the system running the setup.
